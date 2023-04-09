@@ -12,6 +12,7 @@
     if($link){
 
         $file_name = 'books.csv';
+        chmod($file_name, 0644);
         $book = fopen($file_name, 'a');
 
         while($link){
