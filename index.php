@@ -12,16 +12,20 @@
     if($link){
 
         $file_name = 'books.csv';
-        chmod($file_name, 0644);
-        $book = fopen($file_name, 'a');
+        // chmod($file_name, 0644);
+        // $book = fopen($file_name, 'a');
 
         while($link){
 
             $b = $browser->request('GET', $link);
     
-            $b->filter('h3')->each(function($node) use($book){
+            $b->filter('h3')->each(function($node) {
                 $title = $node->filter('a')->attr('title');
-                fputcsv($book, [$title]);
+
+                echo '<pre>';
+                echo $title;
+                echo '</pre>';
+                // fputcsv($book, [$title]);
             } );
     
             try {
@@ -31,19 +35,19 @@
             }
         }
 
-        $mime_type = mime_content_type($file_name);
-        $file_size = filesize($file_name);
+        // $mime_type = mime_content_type($file_name);
+        // $file_size = filesize($file_name);
 
-        header("Content-Type: $mime_type");
-        header("Content-Length: $file_size");
-        header("Content-Disposition: attachment; filename=$file_name");
-        header("Expires: 0");
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
+        // header("Content-Type: $mime_type");
+        // header("Content-Length: $file_size");
+        // header("Content-Disposition: attachment; filename=$file_name");
+        // header("Expires: 0");
+        // header('Cache-Control: must-revalidate');
+        // header('Pragma: public');
         
-        readfile($file_name);
+        // readfile($file_name);
         
-        fclose($book);
+        // fclose($book);
 
         exit();
     }
