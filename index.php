@@ -138,7 +138,7 @@
     <br>
     <form method="post">
         <textarea name="url" id="" cols="30" rows="10"></textarea>
-        <button>Scrape</button>
+        <button>Start</button>
     </form>
 </body>
 </html>
